@@ -1,0 +1,63 @@
+# Ansible Playbook
+- 
+  name: Deploy Web Application
+  hosts: default
+  become: true
+  tasks:
+    - name: Install dependencies
+      apt:
+        pkg:
+        - python 
+        - python-setuptools
+        - python-dev
+        - build-essential
+        - python-pip
+        - python-mysqldb
+        state: present
+        update_cache: true
+      become: true
+    
+    - name: Install MySQL database
+      apt:
+        pkg:
+        - default-mysql-server
+        - default-mysql-client 
+        state: present
+        update_cache: true
+      become: true
+
+    - name: Start MySQL Service
+      service:
+        name: mysql
+        state: started
+        enabled: yes
+      become: true
+
+    - name: Create Application Database
+      mysql_db: 
+        name: employee_db
+        state: present
+
+    - name: Create Database User
+      mysql_user:
+        name: db_user
+        password: Passw0rd
+        priv: '*.*:ALL'
+        state: present
+        host: '%'
+
+    - name: Install Python Flask Dependencies
+      pip:
+        name: '{{ item }}'
+        state: present
+      with_items:
+        - flask
+        - flask-mysql
+
+    - name: Copy Web-Server Code
+      copy: src=simple-webapp/app.py dest=/opt/app.py
+
+    - name: Start Web-Server
+      command: python /opt/app.py &
+      become: true
+
