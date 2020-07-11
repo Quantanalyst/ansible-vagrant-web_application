@@ -3,22 +3,10 @@
   name: Deploy Web Application
   hosts: default
   become: true
-  tasks:
-    - name: Install dependencies
-      apt:
-        pkg:
-        - python 
-        - python-setuptools
-        - python-dev
-        - build-essential
-        - python-pip
-        - python-mysqldb
-        state: present
-        update_cache: true
-      become: true
-    
-    - include: tasks/deploy_db.yml
-    - include: tasks/deploy_web.yml
+  roles:
+   - python_dep
+   - mysql_db
+   - flask_web
 
 
 

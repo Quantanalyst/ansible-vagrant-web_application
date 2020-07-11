@@ -1,0 +1,13 @@
+---
+    - name: Install dependencies
+      apt:
+        pkg:
+        - python 
+        - python-setuptools
+        - python-dev
+        - build-essential
+        - python-pip
+        - python-mysqldb
+        state: present
+        update_cache: true
+      become: true

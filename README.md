@@ -3,7 +3,7 @@ Here, in this project, I provaide the ansible playbook to automate installing LA
 
 For this part, I use a Centos box provisioned by Hashicorp Vagrant and VirtualBox. You can use VirtualBox and VMware directly, but I prefer to use Vagrant as it gives me more features to configure my virtual machine. 
 
-In this tutorial, I used the application developed by KodeKloud team [here](https://github.com/kodekloudhub/learning-app-ecommerce/tree/master). The instruction to run this application on a server with LAMP stack is provided on the application folder. 
+In this part, I used the application developed by KodeKloud team [here](https://github.com/kodekloudhub/learning-app-ecommerce/tree/master). The instruction to run this application on a server with LAMP stack is also provided. 
 
 
 
@@ -15,3 +15,5 @@ Note1: in order to define an inventory for the vagrant vm, you can use the auto-
 ```
 default ansible_ssh_host=127.0.0.1 ansible_ssh_port=2222 ansible_ssh_user='vagrant' ansible_ssh_private_key_file='<your_local_project_folder>/.vagrant/machines/default/virtualbox/private_key'
 ```
+
+In this part, I used the application developed by KodeKloud team [here](https://github.com/mmumshad/simple-webapp). The instruction to run this application on a server with LAMP stack is also provided. 
