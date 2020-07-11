@@ -1,13 +1,1 @@
-# Inventory File
-target1 ansible_host=172.17.0.2 ansible_ssh_pass=Passw0rd ansible_user=root
-target2 ansible_host=172.17.0.3 ansible_ssh_pass=Passw0rd ansible_user=root
-target3 ansible_host=172.17.0.4 ansible_ssh_pass=Passw0rd ansible_user=root
-
-db_and_web_server ansible_ssh_host=192.168.1.10
 default ansible_host=127.0.0.1 ansible_port=2222 ansible_user='vagrant' ansible_ssh_private_key_file='/home/mostafa/DevOps studies/Ansible/.vagrant/machines/default/virtualbox/private_key'
-
-
-[dockers]
-target1
-target2
-target3
