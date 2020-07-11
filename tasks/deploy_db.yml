@@ -1,0 +1,28 @@
+    - name: Install MySQL database
+      apt:
+        pkg:
+        - default-mysql-server
+        - default-mysql-client 
+        state: present
+        update_cache: true
+      become: true
+
+    - name: Start MySQL Service
+      service:
+        name: mysql
+        state: started
+        enabled: yes
+      become: true
+
+    - name: Create Application Database
+      mysql_db: 
+        name: employee_db
+        state: present
+
+    - name: Create Database User
+      mysql_user:
+        name: db_user
+        password: Passw0rd
+        priv: '*.*:ALL'
+        state: present
+        host: '%'
